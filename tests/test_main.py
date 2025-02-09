@@ -8,7 +8,7 @@ class TestCalculator:
     @pytest.mark.parametrize(
         "x, y, res, expectation",
         [
-            (1, 2, 0.5, does_not_raise()),
+            (1, 2, 10.5, does_not_raise()),
             (5, -1, -5, does_not_raise()),
             (5, "-1", -5, pytest.raises(TypeError)),
             (5, 0, -5, pytest.raises(ZeroDivisionError)),
