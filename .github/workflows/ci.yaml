@@ -39,8 +39,8 @@ jobs:
 
       - name: Generate Allure HTML Report
         run: |
-          # Explicitly use the full path to allure in case PATH is not updated correctly
-          "$(pwd)/allure-bin/allure-2.25.0/bin/allure" generate allure-results --clean -o allure-report
+          # PowerShell-compatible way to execute Allure from the full path
+          & "$(pwd)\allure-bin\allure-2.25.0\bin\allure" generate allure-results --clean -o allure-report
 
       - name: Upload Allure Report Artifact
         uses: actions/upload-artifact@v4
