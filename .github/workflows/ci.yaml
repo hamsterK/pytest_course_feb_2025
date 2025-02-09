@@ -32,7 +32,7 @@ jobs:
 
       - name: Install Allure
         run: |
-          curl -o allure.zip -Ls "https://github.com/allure-framework/allure2/releases/latest/download/allure-2.25.0.zip"
+          curl -L "https://github.com/allure-framework/allure2/releases/download/2.25.0/allure-2.25.0.zip" -o allure.zip
           unzip -o allure.zip -d allure-bin
           echo "$(pwd)/allure-bin/allure-2.25.0/bin" >> $GITHUB_PATH
 
