@@ -30,13 +30,16 @@ jobs:
       - name: Run tests with Allure
         run: pytest --alluredir=allure-results
 
-      - name: Install Allure
+      - name: Install Allure CLI
         run: |
           curl -L "https://github.com/allure-framework/allure2/releases/download/2.25.0/allure-2.25.0.zip" -o allure.zip
           unzip -o allure.zip -d allure-bin
+          # Add Allure to the PATH (Windows specific)
           echo "$(pwd)/allure-bin/allure-2.25.0/bin" >> $GITHUB_PATH
+          # For Windows, we also need to set the path in the system environment variable
+          echo "##vso[task.setvariable variable=PATH]$(pwd)/allure-bin/allure-2.25.0/bin;${PATH}"
 
-      - name: Generate Allure Report
+      - name: Generate Allure HTML Report
         run: allure generate allure-results --clean -o allure-report
 
       - name: Upload Allure Report Artifact
